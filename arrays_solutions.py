@@ -1,9 +1,10 @@
 from common import INT_MAX, INT_MIN
 
+
 class ArraySolver(object):
 
     @staticmethod
-    def find_missing_number(unordered_list, n_elements):
+    def find_missing_number(unordered_list, n_elements) -> int:
         """
         find missing number in array of size n containing numbers from 1 to n only.
         :param unordered_list: integer list from 1 to n (with missing element)
@@ -20,7 +21,7 @@ class ArraySolver(object):
     @staticmethod
     def remove_duplicate_from_list(duplicated_list):
         return list(set(duplicated_list))
-    
+
     @staticmethod
     def get_duplicated_from_list(duplicated_list):
         """
@@ -76,3 +77,35 @@ class ArraySolver(object):
                 right_index -= 1
         return pairs
 
+    @staticmethod
+    def quicksort_algorithm(unsorted_list, low, high):
+        i = low
+        j = high
+        pivot = unsorted_list[low + (high - low) // 2]
+
+        while i <= j:
+            while unsorted_list[i] < pivot:
+                i += 1
+
+            while unsorted_list[j] > pivot:
+                j -= 1
+
+            if i <= j:
+                unsorted_list[i], unsorted_list[j] = unsorted_list[j], unsorted_list[i]
+                i += 1
+                j -= 1
+
+        if low < j:
+            ArraySolver.quicksort_algorithm(unsorted_list, low, j)
+
+        if i < high:
+            ArraySolver.quicksort_algorithm(unsorted_list, i, high)
+
+    @staticmethod
+    def quicksort(unsorted_list):
+        length = len(unsorted_list)
+        if not unsorted_list or length == 0:
+            return None
+
+        ArraySolver.quicksort_algorithm(unsorted_list, 0, length - 1)
+        return unsorted_list

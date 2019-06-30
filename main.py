@@ -18,3 +18,5 @@ print(ArraySolver.get_pair_of_sum_n_2(lista_duplicada, 7))
 print(ArraySolver.get_pair_of_sum_n(lista_duplicada, 7))
 
 print(ArraySolver.get_pair_of_sum_wo_repeated(lista_duplicada, 7))
+
+print(ArraySolver.quicksort(unsorted_list))
